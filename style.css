@@ -223,12 +223,16 @@ main{
 }
 
 .chat-header{
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--line-clr);
     padding: 10px;
-    text-align: center;
+}
+
+.chat-header h3{
+    flex-grow: 1;
 }
 
 .chat-header button{
@@ -266,11 +270,21 @@ main{
 }
 
 .ai-message img{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
+    padding: 10px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0px 3px 10px rgb(0, 0, 0);
+    filter: invert(1);
+    transition: 0.5s ease-in-out;
+}
+
+.ai-message img:hover{
+    rotate: 360deg;
 }
 
 .ai-message p{
@@ -292,7 +306,6 @@ main{
     border: none;
     outline: none;
     border-radius: 10px;
-    /* background: var(--line-clr); */
     color: var(--text-clr);
     font-family: 'Poppins', sans-serif;
 }

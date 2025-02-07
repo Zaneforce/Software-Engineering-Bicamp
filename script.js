@@ -26,46 +26,81 @@ function toggleChat(){
     chatbox.classList.toggle("hidden")
 }
 
-function sendMessage(event){
-    if (event.key === "Enter" || event.type === "click") {
-        const userInput = document.getElementById("chat-input");
-        const chatBody = document.getElementById("chat-body");
+const API_KEY = "AIzaSyBeMjD5bC-wdhsdylTe3t9vt3o_Upm2nZ8";
+const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=AIzaSyBeMjD5bC-wdhsdylTe3t9vt3o_Upm2nZ8`;
 
-        if (userInput.value.trim() === ""){
-            return;
-        }  
+const chatInput = document.getElementById("chat-input");
+const chatBody = document.getElementById("chat-body");
 
-        const userMessage = document.createElement("div");
-        userMessage.classList.add("user-message");
-        userMessage.textContent = userInput.value;
-        chatBody.appendChild(userMessage);
+function toggleChat() {
+    document.getElementById("ai-chat").classList.toggle("hidden");
+}
 
-        userInput.value = "";
-        setTimeout(() => {
-            const aiMessage = document.createElement("div");
-            aiMessage.classList.add("ai-message");
+function createChatElement(message, className) {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add(className);
 
-            const aiImage = document.createElement("img");
-            aiImage.src = "./icon/bot.png";
+    if (className === "ai-message") {
+        const aiImage = document.createElement("img");
+        aiImage.src = "./icon/bot.png";
+        aiImage.alt = "Bibo";
+        aiImage.style.filter = "invert(1)";
+        messageDiv.appendChild(aiImage);
+    }
 
-            const botMessage = document.createElement("p");
-            botMessage.textContent = getBotResponse(); 
+    const textElement = document.createElement("p");
+    textElement.textContent = message;
+    messageDiv.appendChild(textElement);
+    return messageDiv;
+}
 
-            aiMessage.appendChild(aiImage);
-            aiMessage.appendChild(botMessage);
-
-            chatBody.appendChild(aiMessage);
-            chatBody.scrollTop = chatBody.scrollHeight; 
-        }, 1000);
+function handleKeyPress(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        handleChat();
     }
 }
 
-function getBotResponse() {
-    const responses = [
-        "Hello! How can I assist you?",
-        "I'm here to help!",
-        "Tell me what you need!",
-        "How can I make your day better?"
-    ];
-    return responses[Math.floor(Math.random() * responses.length)];
+function handleChat() {
+    const userMessage = chatInput.value.trim();
+    if (!userMessage) return;
+
+    chatBody.appendChild(createChatElement(userMessage, "user-message"));
+    chatBody.scrollTop = chatBody.scrollHeight;
+    chatInput.value = "";
+
+    setTimeout(() => {
+        const botMessage = createChatElement("Bibo is typing...", "ai-message");
+        chatBody.appendChild(botMessage);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        generateResponse(botMessage, userMessage);
+    }, 600);
+}
+
+async function generateResponse(botMessageElement, userText) {
+    const requestData = {
+        contents: [
+            { role: "user", parts: [{ text: `From now on, you are Bibo - Personal AI Assistant for BiCamp. Speak in a casual, fun, and humorous way, like a friendly chatbot who loves to joke. Always introduce yourself as 'Bibo' and make interactions lively: ${userText}` }] },
+        ]
+    };
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        });
+
+        const data = await response.json();
+        if (data.candidates && data.candidates.length > 0) {
+            botMessageElement.querySelector("p").textContent = data.candidates[0].content.parts[0].text;
+        } else {
+            botMessageElement.querySelector("p").textContent = "Bibo doesn't understand. Please try again!";
+        }
+    } catch (error) {
+        console.error("Error fetching AI response:", error);
+        botMessageElement.querySelector("p").textContent = "Sorry, something went wrong.";
+    }
+
+    chatBody.scrollTop = chatBody.scrollHeight;
 }

@@ -113,26 +113,25 @@
         <div id="ai-bubble" onclick="toggleChat()">
             <img src="./icon/bot.png" alt="AI Assistant">
         </div>
-        
+
         <div id="ai-chat" class="hidden">
             <div class="chat-header">
-                <h3>AI Assistant</h3>
+                <h3>Bibo</h3>
                 <button onclick="toggleChat()">&times;</button>
             </div>
             <div id="chat-body" class="chat-body">
                 <div class="ai-message">
                     <img src="./icon/bot.png" alt="AI Assistant">
-                    <p class="bot-message">Hi there! I'm Bibo, BiCamp's AI assistant. How can I help you today? 😊</p>
+                    <p class="bot-message">Hi! I'm Bibo, BiCamp's AI assistant. How can I help you today? 😊</p>
                 </div>
             </div>
             <div class="chat-input">
-                <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="sendMessage(event)">
-                <button onclick="sendMessage()">
+                <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+                <button id="send-btn" onclick="handleChat()">
                     <i class='bx bxs-send'></i>
                 </button>
             </div>
         </div>
-
     </main>
     <script src="script.js"></script>
 </body>
