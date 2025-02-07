@@ -1,4 +1,4 @@
-name: Deploy App
+name: Deploy to Production
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -20,10 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set environment variable
+        run: echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> $GITHUB_ENV
+
       - name: Build project
         run: npm run build
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Deploy
         run: npm run deploy
