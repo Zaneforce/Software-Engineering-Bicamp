@@ -46,7 +46,7 @@ function sendMessage(event){
             aiMessage.classList.add("ai-message");
 
             const aiImage = document.createElement("img");
-            aiImage.src = "../icon/bot.png";
+            aiImage.src = "./icon/bot.png";
 
             const botMessage = document.createElement("p");
             botMessage.textContent = getBotResponse(); 
