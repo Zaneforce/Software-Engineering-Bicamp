@@ -6,7 +6,8 @@
     <title>BiCamp</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../icon/animated logo for a Discord server named Bicamp, resembling a campsite with games.png">
-    <script type="text/javascript" src="app.js" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <script type="text/javascript" src="app.js" defer></script> -->
 </head>
 <body>
     <nav id="sidebar">
@@ -109,6 +110,31 @@
             <h2>Hello</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quasi repellat aperiam! Maxime beatae non quo, tempore maiores, suscipit temporibus libero voluptas voluptatibus obcaecati nulla commodi ducimus repudiandae, quibusdam omnis.</p>
         </div>
+
+        <div id="ai-bubble" onclick="toggleChat()">
+            <img src="../icon/bot.png" alt="AI Assistant">
+        </div>
+        
+        <div id="ai-chat" class="hidden">
+            <div class="chat-header">
+                <h3>AI Assistant</h3>
+                <button onclick="toggleChat()">&times;</button>
+            </div>
+            <div id="chat-body" class="chat-body">
+                <div class="ai-message">
+                    <img src="../icon/bot.png" alt="AI Assistant">
+                    <p class="bot-message">Hi there! How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="sendMessage(event)">
+                <button onclick="sendMessage()">
+                    <i class='bx bxs-send'></i>
+                </button>
+            </div>
+        </div>
+
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
