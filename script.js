@@ -26,8 +26,8 @@ function toggleChat(){
     chatbox.classList.toggle("hidden")
 }
 
-const API_KEY = "AIzaSyBeMjD5bC-wdhsdylTe3t9vt3o_Upm2nZ8";
-const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=AIzaSyBeMjD5bC-wdhsdylTe3t9vt3o_Upm2nZ8`;
+const API_KEY = process.env.GEMINI_API_KEY;
+const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
 
 const chatInput = document.getElementById("chat-input");
 const chatBody = document.getElementById("chat-body");
