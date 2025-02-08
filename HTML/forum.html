@@ -77,6 +77,51 @@
         </ul>
     </nav>
     <main>
+        <div class="container">
+            <div class="forum-header">
+                <h2>Forum Discussion</h2>
+                <button class="btn-new-thread" onclick="toggleThreadForm()">+ New Thread</button>
+            </div>
+
+            <!-- Form Buat Thread (Hidden Awalnya) -->
+            <div class="thread-form hidden">
+                <input type="text" id="thread-title" placeholder="Thread Title">
+                <textarea id="thread-content" placeholder="Write your post here..."></textarea>
+                <div class="form-actions">
+                    <button class="btn-cancel" onclick="toggleThreadForm()">Cancel</button>
+                    <button class="btn-submit" onclick="createNewThread()">Post Thread</button>
+                </div>
+            </div>
+
+            <!-- Daftar Thread -->
+            <div class="threads-container" id="threads-container">
+                <!-- Thread akan ditambahkan secara dinamis di sini -->
+            </div>
+        </div>
+
+
+        <div id="ai-bubble" onclick="toggleChat()">
+            <img src="../icon/bot.png" alt="AI Assistant">
+        </div>
+
+        <div id="ai-chat" class="hidden">
+            <div class="chat-header">
+                <h3>Bibo</h3>
+                <button onclick="toggleChat()">&times;</button>
+            </div>
+            <div id="chat-body" class="chat-body">
+                <div class="ai-message">
+                    <img src="../icon/bot.png" alt="AI Assistant">
+                    <p class="bot-message">Hi! I'm Bibo, BiCamp's AI assistant. How can I help you today? 😊</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+                <button id="send-btn" onclick="handleChat()">
+                    <i class='bx bxs-send'></i>
+                </button>
+            </div>
+        </div>
 
     </main>
     <script src="../JS/forum.js"></script>

@@ -12,6 +12,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 html{
@@ -329,4 +330,167 @@ main{
 
 .chat-input button:hover{
     transform: scale(0.9);
+}
+
+.forum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.btn-submit, 
+.btn-cancel{
+    background: var(--accent-clr);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-new-thread {
+    background: var(--accent-clr);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-new-thread:hover {
+    opacity: 0.9;
+}
+
+.thread-form {
+    margin-bottom: 2rem;
+    background: var(--hover-clr);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.thread-form.hidden {
+    display: none;
+}
+
+.thread-form input,
+.thread-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: var(--base-clr);
+    border: 1px solid var(--line-clr);
+    color: var(--text-clr);
+    border-radius: 0.5rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.thread {
+    background: var(--hover-clr);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.thread-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.thread-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.thread-header h3 {
+    color: var(--accent-clr);
+}
+
+.author {
+    color: var(--secondary-text-clr);
+    font-size: 0.9rem;
+}
+
+.date {
+    color: var(--secondary-text-clr);
+    font-size: 0.8rem;
+}
+
+.thread-content {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.thread-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-like, .btn-reply {
+    background: none;
+    border: 1px solid var(--line-clr);
+    color: var(--text-clr);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-like:hover, .btn-reply:hover {
+    background: var(--base-clr);
+}
+
+.reply-form {
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background: var(--base-clr);
+    border: 1px solid var(--line-clr);
+    color: var(--text-clr);
+    border-radius: 0.5rem;
+}
+
+.replies {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    border-left: 2px solid var(--line-clr);
+    padding-left: 1rem;
+}
+
+.reply {
+    background: var(--base-clr);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.reply-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.reply-header img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
