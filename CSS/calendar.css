@@ -364,7 +364,7 @@ p {
 .calendar {
     position: relative;
     width: 90%;
-    height: 85%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
