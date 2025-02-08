@@ -35,7 +35,10 @@ body {
     color: var(--text-clr);
     display: grid;
     grid-template-columns: auto 1fr;
+    overflow: hidden;
 }
+
+
 
 #sidebar {
     box-sizing: border-box;
@@ -326,7 +329,6 @@ p {
     font-family: 'Poppins', sans-serif;
 }
 
-
 .chat-input button {
     padding: 5px 10px;
     background: transparent;
@@ -344,8 +346,8 @@ p {
 
 .calendar-container {
     position: relative;
-    width: 1100px;
-    min-height: 850px;
+    width: 900px;
+    min-height: 700px;
     margin: 0 auto;
     padding: 5px;
     color: var(--text-clr);
@@ -361,8 +363,8 @@ p {
 
 .calendar {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 85%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -393,12 +395,12 @@ p {
 
 .calendar .month {
     width: 100%;
-    height: 150px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 50px;
-    font-size: 1.2rem;
+    padding: 0 30px;
+    font-size: 1rem;
     font-weight: 500;
     text-transform: capitalize;
 }
@@ -415,12 +417,12 @@ p {
 
 .calendar .weekdays {
     width: 100%;
-    height: 100px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     text-transform: capitalize;
 }
@@ -439,14 +441,14 @@ p {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     margin-bottom: 20px;
 }
 
 .calendar .days .day {
     width: 14.28%;
-    height: 90px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -534,13 +536,13 @@ p {
 
 .calendar .goto-today {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 5px;
-    padding: 0 20px;
-    margin-bottom: 20px;
+    padding: 0 10px;
+    margin-bottom: 10px;
     color: var(--text-clr);
 }
 
@@ -584,25 +586,26 @@ p {
     border-radius: 0;
 }
 
-.container .right {
+.calendar-container .right {
     position: relative;
-    width: 40%;
+    width: 35%;
     min-height: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
+    right: 50px;
 }
 
 .right .today-date {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
-    padding-left: 70px;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    padding: 0 20px;
+    padding-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     text-transform: capitalize;
 }
 
@@ -620,7 +623,7 @@ p {
 .events {
     width: 100%;
     height: 100%;
-    max-height: 600px;
+    max-height: 500px;
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
@@ -637,7 +640,7 @@ p {
     flex-direction: column;
     gap: 5px;
     padding: 0 20px;
-    padding-left: 50px;
+    padding-left: 80px;
     color: #fff;
     background: linear-gradient(90deg, #3f4458, transparent);
     cursor: pointer;
@@ -744,7 +747,7 @@ p {
     position: absolute;
     bottom: 100px;
     left: 80%;
-    width: 35%;
+    width: 100%;
     max-height: 0;
     overflow: hidden;
     border-radius: 5px;
