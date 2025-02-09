@@ -151,10 +151,9 @@ body{
 }
 
 .signin-btn {
-    margin-top: auto; 
+    /* margin-top: auto;  */
     transform: translateY(220px);
 }
-
 
 main{
     padding: min(30px, 7%);
