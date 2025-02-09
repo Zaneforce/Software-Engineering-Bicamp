@@ -276,8 +276,10 @@ function renderThreads() {
 
     db.collection("threads").orderBy("timestamp", "desc").onSnapshot(snapshot => {
         container.innerHTML = ''; // Kosongkan sebelum render ulang
-        snapshot.forEach(doc => {
+        snapshot.forEach((doc, index) => {
             const thread = doc.data();
+            const replies = thread.replies || []; // Pastikan replies ada
+
             const threadHTML = `
                 <div class="thread" data-id="${doc.id}">
                     <div class="thread-header">
@@ -292,14 +294,35 @@ function renderThreads() {
                     </div>
                     <div class="thread-content">${thread.content}</div>
                     <div class="thread-actions">
-                        <button class="btn-like" onclick="toggleLike('${doc.id}', ${thread.likes})">
+                        <button class="btn-like" onclick="toggleLike('${doc.id}')">
                             <i class='bx bx-like'></i> ${thread.likes}
                         </button>
                         <button class="btn-reply" onclick="toggleReplyForm('${doc.id}')">Reply</button>
                     </div>
+
+                    <!-- Form Reply -->
                     <div class="reply-form hidden" id="reply-form-${doc.id}">
                         <textarea placeholder="Write your reply..."></textarea>
                         <button class="btn-submit" onclick="submitReply('${doc.id}')">Post Reply</button>
+                    </div>
+
+                    <!-- List Reply -->
+                    <div class="replies">
+                        ${replies.map((reply, replyIndex) => `
+                            <div class="reply">
+                                <div class="reply-header">
+                                    <img src="../icon/user.png" alt="User">
+                                    <div>
+                                        <span class="author">${reply.author}</span>
+                                        <span class="date">${reply.timestamp ? new Date(reply.timestamp.toDate()).toLocaleString() : "Just now"}</span>
+                                    </div>
+                                </div>
+                                <div class="reply-content">${reply.content}</div>
+                                <button class="btn-like" onclick="toggleReplyLike(${index}, ${replyIndex})">
+                                    <i class='bx bx-like'></i> ${reply.likes || 0}
+                                </button>
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
             `;
@@ -343,7 +366,7 @@ function toggleLike(threadId) {
     const userId = "user123"; // Gantilah ini dengan sistem autentikasi user sesungguhnya.
 
     const threadRef = db.collection("threads").doc(threadId);
-    
+
     threadRef.get().then((doc) => {
         if (doc.exists) {
             let thread = doc.data();
@@ -380,16 +403,47 @@ function submitReply(threadId) {
     const content = textarea.value;
 
     if (content) {
+        const newReply = {
+            content,
+            author: "Anonymous",
+            timestamp: firebase.firestore.Timestamp.now(), // Pastikan timestamp valid
+            likes: 0 // Tambahkan likes agar tombol like tidak error
+        };
+
         db.collection("threads").doc(threadId).update({
-            replies: firebase.firestore.FieldValue.arrayUnion({
-                content,
-                author: "Anonymous",
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            })
+            replies: firebase.firestore.FieldValue.arrayUnion(newReply)
         }).then(() => {
-            textarea.value = "";
+            console.log("💬 Reply berhasil ditambahkan!");
+            textarea.value = ""; // Kosongkan textarea setelah reply dikirim
+            renderThreads(); // Refresh tampilan thread agar reply muncul
+        }).catch(error => {
+            console.error("❌ Gagal menambahkan reply:", error);
         });
     }
+}
+
+function toggleReplyLike(threadId, replyIndex) {
+    const threadRef = db.collection("threads").doc(threadId);
+
+    threadRef.get().then((doc) => {
+        if (doc.exists) {
+            let thread = doc.data();
+            let replies = thread.replies || [];
+
+            if (replies[replyIndex]) {
+                // Pastikan reply memiliki jumlah like
+                replies[replyIndex].likes = (replies[replyIndex].likes || 0) + 1;
+
+                // Simpan kembali ke Firestore
+                threadRef.update({ replies }).then(() => {
+                    console.log("👍 Like pada reply berhasil!");
+                    renderThreads(); // Refresh tampilan
+                });
+            }
+        }
+    }).catch((error) => {
+        console.error("❌ Gagal update like pada reply:", error);
+    });
 }
 
 // Toggle form thread baru
@@ -404,4 +458,6 @@ function toggleReplyForm(threadId) {
 
 // Render threads saat halaman dimuat
 window.addEventListener("DOMContentLoaded", renderThreads);
+
+
 
