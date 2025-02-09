@@ -377,13 +377,18 @@ main{
 
 .thread-form input,
 .thread-form textarea {
-    width: 100%;
+    width: 97.5%;
     padding: 0.8rem;
     margin-bottom: 1rem;
     background: var(--base-clr);
     border: 1px solid var(--line-clr);
     color: var(--text-clr);
     border-radius: 0.5rem;
+    resize: none;
+    min-width: 100px;
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .form-actions {
@@ -459,13 +464,18 @@ main{
 }
 
 .reply-form textarea {
-    width: 100%;
+    width: 97%;
     padding: 0.8rem;
     margin-bottom: 0.5rem;
     background: var(--base-clr);
     border: 1px solid var(--line-clr);
     color: var(--text-clr);
     border-radius: 0.5rem;
+    resize: none;
+    min-width: 100px;
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .replies {
