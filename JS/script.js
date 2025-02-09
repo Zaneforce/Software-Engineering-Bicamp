@@ -42,7 +42,7 @@ function createChatElement(message, className) {
 
     if (className === "ai-message") {
         const aiImage = document.createElement("img");
-        aiImage.src = "./icon/bot.png";
+        aiImage.src = "../icon/bot.png";
         aiImage.alt = "Bibo";
         aiImage.style.filter = "invert(1)";
         messageDiv.appendChild(aiImage);

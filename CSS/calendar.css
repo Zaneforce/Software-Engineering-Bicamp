@@ -629,6 +629,8 @@ p {
     display: flex;
     flex-direction: column;
     padding-left: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-clr) var(--base-clr);
 }
 
 .events .event {

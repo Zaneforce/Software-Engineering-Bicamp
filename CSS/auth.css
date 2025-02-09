@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* body {
+    background-color: #FFCBCB;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #FF6699;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    background: #FF6699;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.google-btn {
+    background: white;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+a {
+    color: #FF6699;
+    text-decoration: none;
+} */
+
+:root {
+    --base-clr: #11121a;
+    --line-clr: #42434a;
+    --hover-clr: #222533;
+    --text-clr: #e6e6ef;
+    --accent-clr: #5e63ff;
+    --secondary-text-clr: #b0b3c1;
+}
+
+body {
+    background-color: var(--base-clr);
+    color: var(--text-clr);
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.auth-container {
+    background: var(--hover-clr);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 320px;
+}
+
+.google-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    color: #111;
+    border: 1px solid var(--line-clr);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.google-login img {
+    width: 20px;
+    height: 20px;
+}
+
+.google-login:hover {
+    background: #e6e6e6;
+}
+
+h2 {
+    color: var(--accent-clr);
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid var(--line-clr);
+    border-radius: 5px;
+    background: var(--base-clr);
+    color: var(--text-clr);
+    max-width: 300px;
+    min-width: 300px;
+}
+
+input:focus {
+    border-color: var(--accent-clr);
+    outline: none;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    color: #111;
+    border: 1px solid var(--line-clr);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover,
+.google-login:hover {
+    background: #4a50e6;
+    color: white;
+}
+
+p {
+    font-size: 14px;
+    color: var(--secondary-text-clr);
+}
+
+a {
+    color: var(--accent-clr);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
