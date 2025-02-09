@@ -78,13 +78,14 @@
     </nav>
     <main>
         <div class="container">
+            <!-- Header Forum dan Tombol Buat Thread Baru -->
             <div class="forum-header">
                 <h2>Forum Discussion</h2>
                 <button class="btn-new-thread" onclick="toggleThreadForm()">+ New Thread</button>
             </div>
 
-            <!-- Form Buat Thread (Hidden Awalnya) -->
-            <div class="thread-form hidden">
+            <!-- Form Buat Thread Baru (Awalnya Hidden) -->
+            <div class="thread-form hidden" id="thread-form">
                 <input type="text" id="thread-title" placeholder="Thread Title">
                 <textarea id="thread-content" placeholder="Write your post here..."></textarea>
                 <div class="form-actions">
@@ -93,10 +94,8 @@
                 </div>
             </div>
 
-            <!-- Daftar Thread -->
-            <div class="threads-container" id="threads-container">
-                <!-- Thread akan ditambahkan secara dinamis di sini -->
-            </div>
+            <!-- Container untuk Menampilkan Thread -->
+            <div class="threads-container" id="threads-container"></div>
         </div>
 
 
@@ -124,6 +123,12 @@
         </div>
 
     </main>
-    <script src="../JS/forum.js"></script>
+    <!-- Firebase SDK v8 (lebih simpel dan kompatibel) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Load forum.js setelah Firebase selesai dimuat -->
+    <script defer src="../JS/forum.js"></script>
+
 </body>
 </html>
